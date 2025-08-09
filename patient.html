@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Form - Indus Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="form-header">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="language-toggle">
+                <button id="langToggle" class="lang-btn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langText">اردو</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header-content">
+                    <div class="form-logo">
+                        <img src="assets/img/indus-logo.png" alt="Indus Hospital Logo" class="form-logo-image">
+                    </div>
+                    <div class="form-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <h2 id="formTitle">Patient Issue Form</h2>
+                    <p id="formSubtitle">Please fill out the form below to report your concern</p>
+                </div>
+
+                <form id="patientForm" class="issue-form">
+                    <div class="form-group">
+                        <label for="tokenId" id="tokenLabel">Token ID *</label>
+                        <input type="text" id="tokenId" name="tokenId" placeholder="e.g., 12345, A1234, or 12-345" required>
+                        <span class="error-message" id="tokenError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patientName" id="nameLabel">Full Name *</label>
+                        <input type="text" id="patientName" name="patientName" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age" id="ageLabel">Age</label>
+                            <input type="number" id="age" name="age" min="1" max="120">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact" id="contactLabel">Contact Number</label>
+                            <input type="tel" id="contact" name="contact">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issueDescription" id="issueLabel">Issue Description *</label>
+                        <textarea id="issueDescription" name="issueDescription" rows="5" required></textarea>
+                        <span class="error-message" id="issueError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Submit Issue</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 id="successTitle">Issue Submitted Successfully!</h3>
+                <p id="successMessage">Your concern has been recorded. Our team will review it shortly.</p>
+                <button class="modal-btn" onclick="closeModal()">
+                    <span id="okBtn">OK</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+    </div>
+
+    <script src="js/patient.js"></script>
+</body>
+</html>

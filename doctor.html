@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Form - Indus Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="form-header">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="language-toggle">
+                <button id="langToggle" class="lang-btn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langText">اردو</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header-content">
+                    <div class="form-logo">
+                        <img src="assets/img/indus-logo.png" alt="Indus Hospital Logo" class="form-logo-image">
+                    </div>
+                    <div class="form-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h2 id="formTitle">Doctor Technical Support</h2>
+                    <p id="formSubtitle">Report technical issues and get instant AI-powered solutions</p>
+                </div>
+
+                <form id="doctorForm" class="issue-form">
+                    <div class="form-group">
+                        <label for="employeeCode" id="empCodeLabel">Employee Code *</label>
+                        <input type="text" id="employeeCode" name="employeeCode" placeholder="e.g., DR001, A1234, or 12-345" required>
+                        <span class="error-message" id="empCodeError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issueType" id="issueTypeLabel">Select Issue Type *</label>
+                        <select id="issueType" name="issueType" required>
+                            <option value="" id="selectOption">-- Select an Issue --</option>
+                            <option value="system_crash" id="systemCrash">System Crash</option>
+                            <option value="login_issue" id="loginIssue">Login Problem</option>
+                            <option value="printer_not_working" id="printerIssue">Printer Not Working</option>
+                            <option value="slow_performance" id="slowPerformance">Slow Performance</option>
+                            <option value="internet_down" id="internetDown">Internet Connection Down</option>
+                            <option value="software_error" id="softwareError">Software Error</option>
+                            <option value="hardware_malfunction" id="hardwareMalfunction">Hardware Malfunction</option>
+                            <option value="other" id="otherIssue">Other</option>
+                        </select>
+                        <span class="error-message" id="issueTypeError"></span>
+                    </div>
+
+                    <div class="form-group" id="otherIssueGroup" style="display: none;">
+                        <label for="otherDescription" id="otherDescLabel">Describe the Issue</label>
+                        <textarea id="otherDescription" name="otherDescription" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-search"></i>
+                        <span>Get Solution</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Solution Section -->
+            <div id="solutionSection" class="solution-section" style="display: none;">
+                <div class="solution-card">
+                    <div class="solution-header">
+                        <div class="solution-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 id="solutionTitle">AI-Generated Solution</h3>
+                    </div>
+                    
+                    <div class="solution-content">
+                        <div id="solutionText" class="solution-text"></div>
+                        
+                        <div class="solution-actions">
+                            <button class="action-btn video-btn" id="videoBtn" onclick="showVideoTutorial()">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Watch Video Guide</span>
+                            </button>
+                            
+                            <button class="action-btn resolved-btn" id="resolvedBtn" onclick="markResolved()">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mark as Resolved</span>
+                            </button>
+                            
+                            <button class="action-btn escalate-btn" id="escalateBtn" onclick="escalateToIT()">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Escalate to IT</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Modal -->
+            <div id="videoModal" class="modal">
+                <div class="modal-content video-modal">
+                    <div class="modal-header">
+                        <h3 id="videoTitle">Step-by-Step Video Guide</h3>
+                        <button class="close-btn" onclick="closeVideoModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="video-container">
+                        <iframe id="videoFrame" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+    </div>
+
+    <script src="js/doctor.js"></script>
+</body>
+</html>

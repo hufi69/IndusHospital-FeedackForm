@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indus Hospital Issue Resolver</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button id="langToggle" class="lang-btn">
+                <i class="fas fa-globe"></i>
+                <span id="langText">اردو</span>
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Logo and Title -->
+            <div class="header-section">
+                <div class="logo-container">
+                    <img src="assets/img/indus-logo.png" alt="Indus Hospital Logo" class="logo-image">
+                </div>
+                <h1 id="appTitle" class="app-title">Indus Hospital Issue Resolver</h1>
+                <p id="appSubtitle" class="app-subtitle">Digital Solution for Healthcare Issue Management</p>
+            </div>
+
+            <!-- Selection Cards -->
+            <div class="selection-container">
+                <div class="selection-card doctor-card" onclick="navigateToDoctor()">
+                    <div class="card-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 id="doctorTitle">Doctor</h3>
+                    <p id="doctorDesc">Report technical issues and get instant solutions</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="selection-card patient-card" onclick="navigateToPatient()">
+                    <div class="card-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <h3 id="patientTitle">Patient</h3>
+                    <p id="patientDesc">Submit your concerns and feedback</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <span id="feature1">Real-time Processing</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-robot"></i>
+                    <span id="feature2">AI-Powered Solutions</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span id="feature3">Secure & Confidential</span>
+                </div>
+            </div>
+            
+                           <!-- Admin Link -->
+               <div class="admin-link">
+                   <a href="admin.html" class="admin-btn">
+                       <i class="fas fa-chart-line"></i>
+                       <span>Admin Dashboard</span>
+                   </a>
+               </div>
+               
+               <!-- AI Demo Link -->
+               <div class="admin-link" style="margin-top: 15px;">
+                   <a href="doctor-ai-demo.html" class="admin-btn" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                       <i class="fas fa-robot"></i>
+                       <span>🤖 AI Features Demo</span>
+                   </a>
+               </div>
+        </div>
+
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

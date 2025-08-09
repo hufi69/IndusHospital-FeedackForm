@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Indus Hospital</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Section -->
+        <div id="loginSection" class="login-section">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        <img src="assets/img/indus-logo.png" alt="Indus Hospital Logo" class="login-logo-image">
+                    </div>
+                    <div class="login-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Admin Dashboard</h2>
+                    <p>Enter your credentials to access reports</p>
+                </div>
+
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                        <span class="error-message" id="usernameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </button>
+                </form>
+
+                <div class="back-to-home">
+                    <button class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Home</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="dashboard-section" style="display: none;">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="goBack()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h1>Admin Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-info">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Admin</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalIssues">0</h3>
+                        <p>Total Issues</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="doctorIssues">0</h3>
+                        <p>Doctor Issues</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="patientIssues">0</h3>
+                        <p>Patient Issues</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="resolvedIssues">0</h3>
+                        <p>Resolved</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Issues by Type</h3>
+                    <canvas id="issueTypeChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Issues by Status</h3>
+                    <canvas id="issueStatusChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Daily Issues Trend</h3>
+                    <canvas id="dailyTrendChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Resolution Time</h3>
+                    <canvas id="resolutionTimeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Issues Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Recent Issues</h3>
+                    <div class="table-actions">
+                        <button class="action-btn" onclick="exportData()">
+                            <i class="fas fa-download"></i>
+                            <span>Export Data</span>
+                        </button>
+                        <button class="action-btn" onclick="refreshData()">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Refresh</span>
+                        </button>
+                        <button class="action-btn danger" onclick="clearAllData()">
+                            <i class="fas fa-trash"></i>
+                            <span>Clear All Data</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table id="issuesTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Issue</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="issuesTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Animation -->
+        <div class="bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
